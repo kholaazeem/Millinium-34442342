@@ -1,42 +1,200 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+:root {
+  --primary-gold: #E0A852; 
+  --text-light: #F8F9FA;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #000;
+  overflow-x: hidden;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+/* =========================================
+   NAVBAR STYLES
+   ========================================= */
+
+/* Navbar Container */
+.navbar {
+  transition: all 0.3s ease-in-out;
+  background-color: #ffffff; /* Always White */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* Brand/Logo Styling */
+.navbar-brand {
+  font-family: 'Playfair Display', serif;
+  color: #000 !important;
+}
+
+/* Nav Links Base Style */
+.nav-link {
+  color: #000 !important;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative; /* Underline animation ke liye */
+}
+
+/* Desktop Hover Effect (Yellow + Underline) */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 5px; /* Text ke thoda neeche */
+  left: 0;
+  background-color: var(--primary-gold);
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover {
+  color: var(--primary-gold) !important;
+}
+
+.nav-link:hover::after {
+  width: 100%; /* Hover par poori line draw ho jaye */
+}
+
+/* =========================================
+   MOBILE MENU ANIMATION & STYLING (Imp)
+   ========================================= */
+
+@media (max-width: 991px) {
+  
+  /* 1. Mobile Dropdown Box Styling */
+  .navbar-collapse {
+    background-color: #ffffff;
+    position: absolute;
+    top: 100%; /* Navbar ke bilkul neeche */
+    left: 0;
+    right: 0;
+    padding: 20px;
+    
+    /* Box Shadow - Menu ko alag dikhane ke liye */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); 
+    border-top: 1px solid #f0f0f0;
+    
+    /* Animation Start State (Chupa hua) */
+    opacity: 0;
+    transform: translateY(-20px);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); /* Smooth Easing */
+    visibility: hidden;
   }
-  to {
-    transform: rotate(360deg);
+
+  /* 2. Animation End State (Jab menu open ho) */
+  .navbar-collapse.show {
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+  }
+
+  /* 3. Mobile Links Specific Styling */
+  .navbar-collapse .nav-link {
+    padding: 12px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(0,0,0,0.03); /* Halka sa divider */
+  }
+
+  /* Mobile Hover Effect */
+  .navbar-collapse .nav-link:hover {
+    color: var(--primary-gold) !important;
+    background-color: rgba(224, 168, 82, 0.05); /* Halka background color */
+    letter-spacing: 1px; /* Thoda sa phail jaye */
+  }
+  
+  /* Mobile mein underline center mein aaye */
+  .navbar-collapse .nav-link::after {
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 8px;
+  }
+  
+  /* Mobile Toggle Button Focus Remove */
+  .navbar-toggler:focus {
+    box-shadow: none;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* =========================================
+   BUTTONS & GENERAL ANIMATIONS
+   ========================================= */
+
+.btn-gold {
+  background-color: var(--primary-gold);
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
-.card {
-  padding: 2em;
+.btn-gold:hover {
+  background-color: #c5903d;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(224, 168, 82, 0.3);
 }
 
-.read-the-docs {
-  color: #888;
+.animate-fade-up {
+  animation: fadeInUp 1s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+.delay-1 { animation-delay: 0.2s; }
+.delay-2 { animation-delay: 0.4s; }
+.delay-3 { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Contact Us Button - Visible & Glass Hover */
+.btn-outline-custom {
+  border: 1px solid rgba(255, 255, 255, 0.6); /* Border thoda transparent */
+  color: white;
+  padding: 10px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  background-color: transparent; /* Shuru mein transparent */
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect - Halka sa background */
+.btn-outline-custom:hover {
+  background-color: rgba(255, 255, 255, 0.15); /* 15% White Background (Glass look) */
+  border-color: white; /* Border full white ho jaye */
+  color: white;
+  transform: translateY(-2px); /* Thoda sa upar uthay */
+}
+
+
+/* =========================================
+   FEATURES SECTION STYLES
+   ========================================= */
+
+/* Card Styling */
+.feature-card {
+  border: 1px solid rgba(0,0,0,0.05); /* Halka sa border */
+  transition: all 0.3s ease;
+}
+
+/* Hover Effect on Card - Halka sa Shadow */
+.feature-card:hover {
+  transform: translateY(-5px); /* Thoda sa upar uthay */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Soft shadow */
+  border-color: transparent;
+}
+
+/* Icon Box - Light Square Container */
+.icon-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background-color: rgba(224, 168, 82, 0.1); /* Gold color ka bohot halka version */
+  border-radius: 12px; /* Thoday gol konay */
 }
