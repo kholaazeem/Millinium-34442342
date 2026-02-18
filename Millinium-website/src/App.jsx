@@ -15,6 +15,7 @@ import Footer from './components/Footer';
 // Contact Page ke 2 Components Import karein
 import ContactHeader from './components/ContactHeader';
 import LetsConnect from './components/LetsConnect';
+import OurPrograms from './components/OurPrograms';
 
 function App() {
   return (
@@ -33,7 +34,12 @@ function App() {
         } />
         
         {/* Products Page (Placeholder) */}
-        <Route path="/products" element={<div style={{paddingTop: '100px', minHeight: '60vh'}}>Products Page</div>} />
+        <Route path="/products" element={
+          <>
+          <OurPrograms/>
+          <Newsletter/>
+          </>
+        } />
         
         {/* Contact Page - Dono Components yahan laga diye */}
         <Route path="/contact" element={
