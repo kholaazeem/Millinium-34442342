@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; // Link import hona zaroori hai
 import { X, Menu } from 'lucide-react'; 
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    // Navbar hamesha White aur Fixed Rahega
     <nav className="navbar navbar-expand-lg fixed-top bg-white shadow-sm py-3">
       <div className="container">
-        {/* Logo - Hamesha Black */}
+        {/* Logo */}
         <Link 
           className="navbar-brand fw-bold fs-3 text-black" 
           to="/" 
@@ -18,7 +17,7 @@ const Navbar = () => {
           MILLENNIUM
         </Link>
         
-        {/* Mobile Toggle Button - Black Icon */}
+        {/* Mobile Toggle Button */}
         <button 
           className="navbar-toggler border-0 p-0" 
           type="button" 
@@ -43,10 +42,18 @@ const Navbar = () => {
             ))}
           </ul>
           
-          {/* Button */}
+          {/* UPDATED BUTTON SECTION */}
           <div className="text-center mt-3 mt-lg-0">
-            <button className="btn btn-gold">Get Started</button>
+            {/* Button ko Link se replace kiya hai */}
+            <Link 
+              to="/contact" 
+              className="btn btn-gold text-decoration-none"
+              onClick={() => setIsOpen(false)} // Mobile menu band karne ke liye
+            >
+              Get Started
+            </Link>
           </div>
+          
         </div>
       </div>
     </nav>

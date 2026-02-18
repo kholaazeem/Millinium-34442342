@@ -1,7 +1,33 @@
 import React from 'react';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import Swal from 'sweetalert2'; // 1. SweetAlert Import
 
 const LetsConnect = () => {
+
+  // 2. Form Submit hone par yeh function chalega
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Page reload hone se roken
+
+    // Pyara sa Sweet Alert
+    Swal.fire({
+      title: 'Message Sent! 💌',
+      text: 'Thank you for reaching out! We will get back to you and your partner shortly.',
+      icon: 'success',
+      confirmButtonText: 'Great!',
+      confirmButtonColor: '#E0A852', // Brand Gold Color
+      background: '#fff',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      }
+    });
+
+    // Optional: Form reset karne ke liye
+    e.target.reset(); 
+  };
+
   return (
     <section className="py-5 bg-white">
       <div className="container py-4">
@@ -14,7 +40,6 @@ const LetsConnect = () => {
               Whether you're ready to start your fitness journey together or just want to say hello, our team is here for you.
             </p>
 
-            {/* Info Items */}
             <div className="d-flex align-items-start mb-4">
               <div className="icon-box me-3">
                 <Mail size={24} color="#E0A852" />
@@ -48,20 +73,21 @@ const LetsConnect = () => {
 
           {/* Right Column: Form */}
           <div className="col-lg-7">
-            <form>
+            {/* 3. onSubmit handler yahan lagaya */}
+            <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label className="form-label fw-bold small text-muted">Name</label>
-                <input type="text" className="form-control p-3 bg-light border-0" placeholder="Your name" />
+                <input required type="text" className="form-control p-3 bg-light border-0" placeholder="Your name" />
               </div>
               
               <div className="mb-4">
                 <label className="form-label fw-bold small text-muted">Email</label>
-                <input type="email" className="form-control p-3 bg-light border-0" placeholder="your@email.com" />
+                <input required type="email" className="form-control p-3 bg-light border-0" placeholder="your@email.com" />
               </div>
               
               <div className="mb-4">
                 <label className="form-label fw-bold small text-muted">Message</label>
-                <textarea className="form-control p-3 bg-light border-0" rows="5" placeholder="How can we help?"></textarea>
+                <textarea required className="form-control p-3 bg-light border-0" rows="5" placeholder="How can we help?"></textarea>
               </div>
 
               <button type="submit" className="btn w-100 rounded-pill py-3 fw-bold text-white submit-btn">
@@ -73,7 +99,6 @@ const LetsConnect = () => {
         </div>
       </div>
 
-      {/* Internal CSS for this specific component */}
       <style jsx>{`
         .icon-box {
           width: 50px;

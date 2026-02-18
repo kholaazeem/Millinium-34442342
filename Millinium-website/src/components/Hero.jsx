@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // 1. Link Import kiya
 import { MoveRight } from 'lucide-react';
 
 const Hero = () => {
@@ -30,21 +31,30 @@ const Hero = () => {
               Millennium combines crowd-sourced data with scientific research to deliver workout experiences made for couples.
             </p>
 
-            {/* Buttons */}
+            {/* Buttons Section Updated */}
             <div className="d-flex gap-3 animate-fade-up delay-3 flex-wrap">
-              <button className="btn btn-gold d-flex align-items-center gap-2">
+              
+              {/* Explore Programs -> Jata hai /products par */}
+              <Link 
+                to="/products" 
+                className="btn btn-gold d-flex align-items-center gap-2 text-decoration-none"
+              >
                 Explore Programs <MoveRight size={20} />
-              </button>
-              <button className="btn btn-outline-custom">
+              </Link>
+
+              {/* Contact Us -> Jata hai /contact par */}
+              <Link 
+                to="/contact" 
+                className="btn btn-outline-custom text-decoration-none"
+              >
                 Contact Us
-              </button>
+              </Link>
+              
             </div>
           </div>
         </div>
       </div>
     </div>
-
-    
   );
 };
 

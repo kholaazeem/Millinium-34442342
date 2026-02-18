@@ -16,6 +16,11 @@ import Footer from './components/Footer';
 import ContactHeader from './components/ContactHeader';
 import LetsConnect from './components/LetsConnect';
 import OurPrograms from './components/OurPrograms';
+import YogaSection from './components/YogaSection';
+import StrengthSection from './components/StrengthSection';
+import CardioSection from './components/CardioSection';
+import Terms from './components/Terms';
+import TermsHeader from './components/TermsHeader';
 
 function App() {
   return (
@@ -37,6 +42,9 @@ function App() {
         <Route path="/products" element={
           <>
           <OurPrograms/>
+          <YogaSection/>
+          <StrengthSection/>
+          <CardioSection/>
           <Newsletter/>
           </>
         } />
@@ -50,7 +58,12 @@ function App() {
         } /> 
         
         {/* Terms Page (Placeholder) */}
-        <Route path="/terms" element={<div style={{paddingTop: '100px', minHeight: '60vh'}}>Terms Page</div>} />
+        <Route path="/terms" element={
+          <>
+            <TermsHeader/>
+            <Terms />
+          </>
+        } />
       </Routes>
 
       <Footer /> 

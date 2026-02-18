@@ -1,9 +1,10 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react'; // Arrow icon ke liye
+import { Link } from 'react-router-dom'; // 1. Link import kiya
+import { ArrowRight } from 'lucide-react'; 
 
 const ReadyToTrain = () => {
   return (
-    <section className="py-5" style={{ backgroundColor: '#ebebeb' }}> {/* Light Grey Background matching image */}
+    <section className="py-5" style={{ backgroundColor: '#ebebeb' }}>
       <div className="container text-center py-5">
         
         {/* Heading */}
@@ -16,10 +17,13 @@ const ReadyToTrain = () => {
           Discover workout programs designed to bring you closer, push you further, and celebrate every milestone together.
         </p>
 
-        {/* CTA Button */}
-        <button className="btn rounded-pill px-5 py-3 fw-bold text-white d-inline-flex align-items-center gap-2 cta-btn">
+        {/* CTA Button converted to Link */}
+        <Link 
+          to="/products" 
+          className="btn rounded-pill px-5 py-3 fw-bold text-white d-inline-flex align-items-center gap-2 cta-btn text-decoration-none"
+        >
           View Programs <ArrowRight size={18} />
-        </button>
+        </Link>
 
       </div>
 
@@ -36,6 +40,7 @@ const ReadyToTrain = () => {
           background-color: #d49a45; /* Darker Gold on Hover */
           transform: translateY(-2px);
           box-shadow: 0 10px 20px rgba(224, 168, 82, 0.25);
+          color: white; /* Ensure text remains white on hover */
         }
       `}</style>
     </section>
